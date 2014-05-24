@@ -1,19 +1,14 @@
-#include <iostream>
+#include "gmock/gmock.h"
 #include "FizzBuzzer.h"
 
-using namespace std;
+using namespace testing;
 
-bool FizzBuzzer_test_OneIsDigit(){
-	FizzBuzzer f(1,1);
-
-	if ( f.hasNextString() &&
-		("1" == f.getNextString()))
-	{
-		return true;
-	}
-
-	return false;
+TEST( FizzBuzzer, OneIsDigit ){
+    FizzBuzzer f(1,1);
+    ASSERT_THAT( f.hasNextString(), Eq(true) );
+    ASSERT_THAT( f.getNextString(), Eq("1") );
 }
+//TODO Next tests
 
 bool FizzBuzzer_test_ThreeIsFizz(){
 	FizzBuzzer f(3,3);
